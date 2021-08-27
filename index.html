@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tic Toc Toe Game</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet"
+            href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+            integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+            crossorigin="anonymous" />
+        <script src="script.js" defer></script>
+    </head>
+    <body>
+        <div class="container">
+            <h1 id="h-title">Javascript Tic Toc Toe Game</h1>
+            <div id="game-count">1 jhv</div>
+            <div class="game-area">
+                <div class="player-1-area">
+                    <div>X player <i class="fas fa-user"></i></div>
+                    <p id="player-1-score">0</p>
+                </div>
+                <div class="board" id="board">
+                    <div class="cell" data-cell></div>
+                    <div class="cell" data-cell></div>
+                    <div class="cell" data-cell></div>
+                    <div class="cell" data-cell></div>
+                    <div class="cell" data-cell></div>
+                    <div class="cell" data-cell></div>
+                    <div class="cell" data-cell></div>
+                    <div class="cell" data-cell></div>
+                    <div class="cell" data-cell></div>
+                </div>
+                <div class="player-2-area">
+                    <div>O player <i class="fas fa-user"></i></div>
+                    <p id="player-2-score">0</p>
+                </div>
+            </div>
+            <div id="new-game"><i class="fas fa-gamepad"></i> New Game</div>
+        </div>
+        <!--Area to show the result-->
+        <div class="result-area" id="result-area">
+            <div id="current-result-text">Current Result : X=0 , O=0 and Total-Game = 0</div>
+            <span id="draw"><i class="fas fa-handshake"></i></span>
+            <span id="win"><i class="fas fa-trophy"></i></span>
+            <div id="result-message-text"> X Wins</div>
+            <button id="restart">Restart</button>
+        </div>
+    </body>
+</html>

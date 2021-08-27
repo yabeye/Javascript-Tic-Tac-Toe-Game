@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
+:root {
+    --cell-size: 100px;
+    --border-curvature:.9em;
+}
+
+body {
+    background: #5f2c82;
+    background: -webkit-linear-gradient(to right, #49a09d, #5f2c82);
+    background: linear-gradient(to right, #49a09d, #5f2c82);
+    overflow: hidden;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+    height: 100vh;
+}
+
+h1#h-title {
+    font-size: 30px;
+    font-style: bold;
+    color: white;
+}
+
+#game-count {
+    position: fixed;
+    top: 150px;
+
+}
+
+.game-area {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+
+}
+
+.cell {
+    background-color: white;
+    border: 3px solid #111111;
+    width: calc(var(--cell-size));
+    height: calc(var(--cell-size));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/*Remove extra border marks */
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3) {
+    border-top: 3px solid #ababab;
+}
+
+.cell:nth-child(3n) {
+    border-right: 3px solid #ababab;
+}
+
+.cell:nth-child(n+7) {
+    border-bottom: 3px solid #ababab;
+}
+
+.cell:nth-child(3n-2) {
+    border-left: 3px solid #ababab;
+}
+
+/* Nice Curve Effect */
+.cell:first-child{
+    border-top-left-radius: var(--border-curvature);
+}
+.cell:nth-child(3){
+    border-top-right-radius: var(--border-curvature);
+}
+.cell:nth-child(7){
+    border-bottom-left-radius: var(--border-curvature);
+}
+.cell:nth-child(9){
+    border-bottom-right-radius: var(--border-curvature);  
+}
+
+/* X Cells*/
+.cell.x::before,
+.cell.x::after,
+.board.x .cell:not(.x):not(.o):hover::before,
+.board.x .cell:not(.x):not(.o):hover::after {
+    position: absolute;
+    content: '';
+    background-color: #111111;
+    width: calc(var(--cell-size)*.1);
+    height: calc(var(--cell-size)*.9);
+}
+
+.cell.x::before,
+.board.x .cell:not(.x):not(.o):hover::before {
+    transform: rotate(45deg);
+}
+
+.cell.x::after,
+.board.x .cell:not(.x):not(.o):hover::after {
+    transform: rotate(-45deg);
+}
+
+/*O Cells*/
+.cell.o::before,
+.cell.o::after,
+.board.o .cell:not(.x):not(.o):hover::before,
+.board.o .cell:not(.x):not(.o):hover::after {
+    position: absolute;
+}
+
+
+.cell.o::before,
+.board.o .cell:not(.x):not(.o):hover::before {
+    content: '';
+    background-color: #111111;
+    width: calc(var(--cell-size)*.8);
+    height: calc(var(--cell-size)*.8);
+    border-radius: 50%;
+}
+
+.cell.o::after,
+.board.o .cell:not(.x):not(.o):hover::after {
+    content: '';
+    background-color: white;
+    width: calc(var(--cell-size)*.6);
+    height: calc(var(--cell-size)*.6);
+    border-radius: 50%;
+}
+
+
+/* Cell on Hover Styles */
+.board.x .cell:not(.x):not(.o):hover::before,
+.board.x .cell:not(.x):not(.o):hover::after,
+.board.o .cell:not(.x):not(.o):hover::before {
+    background-color: rgb(162, 165, 167);
+}
+
+.cell.x,
+.cell.o {
+    cursor: not-allowed;
+}
+
+/* Player Score Areas */
+
+.player-1-area,
+.board,
+.player-2-area {
+    margin: 0px 15px 0px;
+    padding: 0px 10px 0px;
+}
+
+.player-1-area,
+.player-2-area {
+    font-size: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+}
+
+#new-game {
+    font-size: 20px;
+    background-color: black;
+    color: white;
+    padding: 15px;
+    border: 1px solid white;
+    border-radius: .8em;
+    font-size: larger;
+    font-weight: bold;
+    border-color: #6553b8;
+    cursor: pointer;
+}
+
+#new-game:hover {
+    color: white;
+    border-color: white;
+    background-color: #6553b8;
+}
+#new-game:focus{
+    outline: blue auto 5px; 
+}
+
+
+/* Game Result Area */
+
+.result-area {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: center;
+    background: #5f2c82;
+    background: -webkit-linear-gradient(to right, #49a09d, #5f2c82);
+    background: linear-gradient(to right, #49a09d, #5f2c82);
+    opacity: 0.95;
+}
+
+
+#current-result-text {
+    font-size: 20px;
+}
+
+#result-message-text {
+    color: white;
+    font-size: 50px;
+
+}
+
+button#restart {
+    padding: 10px 30px;
+    font-size: larger;
+    font-weight: bold;
+    border-color: #6553b8;
+}
+
+button#restart:hover {
+    color: white;
+    border-color: white;
+    background-color: #6553b8;
+}
+
+/* Icons */
+#draw,
+#win {
+    font-size: 50px;
+    color: #fff;
+    display: none;
+}
+
+.result-area.show,
+#draw.show,
+#win.show {
+    display: flex;
+}
